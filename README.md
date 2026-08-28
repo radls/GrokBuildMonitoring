@@ -66,6 +66,7 @@ npm start
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `PORT` | `3847` | API / production server port |
+| `HOST` | `127.0.0.1` | Bind address for the API. Default is localhost-only so session data is not exposed on the LAN. |
 | `GROK_HOME` | `~/.grok` | Grok data directory |
 | `CACHE_MS` | `1500` | In-memory scan cache TTL |
 | `NODE_ENV` | — | Set to `production` to serve `dist/` |
