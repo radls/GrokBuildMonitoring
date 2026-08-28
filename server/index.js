@@ -8,10 +8,17 @@ import { refinePrompt } from "./refine.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const PORT = Number(process.env.PORT) || 3847;
+const HOST = process.env.HOST || "127.0.0.1";
 const isProd = process.env.NODE_ENV === "production";
 
 const app = express();
-app.use(cors());
+const corsOrigins = [
+  "http://localhost:5174",
+  "http://127.0.0.1:5174",
+  `http://localhost:${PORT}`,
+  `http://127.0.0.1:${PORT}`,
+];
+app.use(cors({ origin: corsOrigins }));
 app.use(express.json());
 
 // Simple in-memory cache to avoid hammering disk on rapid polls
@@ -197,8 +204,8 @@ if (isProd) {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`Grok Build Monitoring → http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Grok Build Monitoring → http://${HOST}:${PORT}`);
   console.log(`  GROK_HOME: ${getGrokHome()}`);
   console.log(`  mode: ${isProd ? "production" : "development"}`);
 });
