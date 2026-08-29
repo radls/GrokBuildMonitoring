@@ -9,7 +9,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const PORT = Number(process.env.PORT) || 3847;
 const HOST = process.env.HOST || "127.0.0.1";
-const isProd = process.env.NODE_ENV === "production";
+const isProd =
+  process.env.NODE_ENV === "production" ||
+  process.env.npm_lifecycle_event === "start";
 
 const app = express();
 const corsOrigins = [

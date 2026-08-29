@@ -4,10 +4,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const apiPort = Number(process.env.PORT) || 3847;
 
 export default defineConfig({
   root: __dirname,
   plugins: [react()],
+  define: {
+    __API_PORT__: JSON.stringify(apiPort),
+  },
   build: {
     outDir: path.resolve(__dirname, "../dist"),
     emptyOutDir: true,
@@ -18,7 +22,7 @@ export default defineConfig({
     strictPort: true,
     proxy: {
       "/api": {
-        target: "http://localhost:3847",
+        target: `http://localhost:${apiPort}`,
         changeOrigin: true,
       },
     },

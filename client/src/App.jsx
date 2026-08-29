@@ -2408,7 +2408,7 @@ export default function App() {
 
       {error && (
         <div className="error-banner">
-          Failed to load: {error}. Is the API server running on port 3847?
+          Failed to load: {error}. Is the API server running on port {__API_PORT__}?
         </div>
       )}
 
