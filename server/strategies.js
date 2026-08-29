@@ -129,7 +129,7 @@ Implement prompt strategies pane only…`,
       "When success needs several turns and verification, /goal keeps the agent on a measurable objective.",
     when: "Migrations, greenfield features, or “keep going until it works” work.",
     how: "`/goal <objective> [--budget tokens]` with a testable claim; check `/goal status`.",
-    example: `/goal Strategies pane shows top 5 ranked strategies; verified in browser at :5173
+    example: `/goal Strategies pane shows top 5 ranked strategies; verified in browser at :5174
 /goal status`,
     antiPatterns: ["Open-ended 'keep improving the app' goals"],
     pairsWith: ["/goal", "/check-work", "/plan"],
